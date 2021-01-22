@@ -7,14 +7,20 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
+
+import com.example.easynotes.model.Account;
+import com.example.easynotes.model.Hotel;
+import com.example.easynotes.model.Reservation;
 
 @Entity
 @Table(name = "hotel")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
         allowGetters = true)
-public class Hotel {
+public class HotelRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

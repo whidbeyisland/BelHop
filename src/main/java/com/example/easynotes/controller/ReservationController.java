@@ -1,8 +1,8 @@
-package com.example.easyReservations.controller;
+package com.example.easynotes.controller;
 
-import com.example.easyReservations.exception.ResourceNotFoundException;
-import com.example.easyReservations.model.Reservation;
-import com.example.easyReservations.repository.ReservationRepository;
+import com.example.easynotes.exception.ResourceNotFoundException;
+import com.example.easynotes.model.Reservation;
+import com.example.easynotes.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,49 +10,52 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * Created by rajeevkumarsingh on 27/06/17.
+ */
 @RestController
 @RequestMapping("/api")
 public class ReservationController {
 
     @Autowired
-    ReservationRepository ReservationRepository;
+    ReservationRepository reservationRepository;
 
-    @GetMapping("/Reservations")
+    @GetMapping("/reservations")
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
     }
 
-    @PostMapping("/Reservations")
-    public Reservation createReservation(@Valid @RequestBody Reservation Reservation) {
-        return reservationRepository.save(Reservation);
+    @PostMapping("/reservations")
+    public Reservation createReservation(@Valid @RequestBody Reservation reservation) {
+        return reservationRepository.save(reservation);
     }
 
-    @GetMapping("/Reservations/{id}")
-    public Reservation getReservationById(@PathVariable(value = "id") Long ReservationId) {
-        return ReservationRepository.findById(ReservationId)
-                .orElseThrow(() -> new ResourceNotFoundException("Reservation", "id", ReservationId));
+    @GetMapping("/reservations/{id}")
+    public Reservation getReservationById(@PathVariable(value = "id") Long reservationId) {
+        return reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new ResourceNotFoundException("Reservation", "id", reservationId));
     }
 
-    @PutMapping("/Reservations/{id}")
-    public Reservation updateReservation(@PathVariable(value = "id") Long ReservationId,
-                                           @Valid @RequestBody Reservation ReservationDetails) {
+    @PutMapping("/reservations/{id}")
+    public Reservation updateReservation(@PathVariable(value = "id") Long reservationId,
+                                           @Valid @RequestBody Reservation reservationDetails) {
 
-        Reservation Reservation = ReservationRepository.findById(ReservationId)
-                .orElseThrow(() -> new ResourceNotFoundException("Reservation", "id", ReservationId));
+        Reservation reservation = reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new ResourceNotFoundException("Reservation", "id", reservationId));
 
-        Reservation.setTitle(ReservationDetails.getTitle());
-        Reservation.setContent(ReservationDetails.getContent());
+        reservation.setTitle(reservationDetails.getTitle());
+        reservation.setContent(reservationDetails.getContent());
 
-        Reservation updatedReservation = ReservationRepository.save(Reservation);
+        Reservation updatedReservation = reservationRepository.save(reservation);
         return updatedReservation;
     }
 
-    @DeleteMapping("/Reservations/{id}")
-    public ResponseEntity<?> deleteReservation(@PathVariable(value = "id") Long ReservationId) {
-        Reservation Reservation = ReservationRepository.findById(ReservationId)
-                .orElseThrow(() -> new ResourceNotFoundException("Reservation", "id", ReservationId));
+    @DeleteMapping("/reservations/{id}")
+    public ResponseEntity<?> deleteReservation(@PathVariable(value = "id") Long reservationId) {
+        Reservation reservation = reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new ResourceNotFoundException("Reservation", "id", reservationId));
 
-        ReservationRepository.delete(Reservation);
+        reservationRepository.delete(reservation);
 
         return ResponseEntity.ok().build();
     }

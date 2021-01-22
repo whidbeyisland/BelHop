@@ -7,7 +7,13 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
+
+import com.example.easynotes.model.Hotel;
+import com.example.easynotes.model.HotelRoom;
+import com.example.easynotes.model.Reservation;
 
 @Entity
 @Table(name = "account")

@@ -1,8 +1,8 @@
-package com.example.easyAccounts.controller;
+package com.example.easynotes.controller;
 
-import com.example.easyAccounts.exception.ResourceNotFoundException;
-import com.example.easyAccounts.model.Account;
-import com.example.easyAccounts.repository.AccountRepository;
+import com.example.easynotes.exception.ResourceNotFoundException;
+import com.example.easynotes.model.Account;
+import com.example.easynotes.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,49 +10,52 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * Created by rajeevkumarsingh on 27/06/17.
+ */
 @RestController
 @RequestMapping("/api")
 public class AccountController {
 
     @Autowired
-    AccountRepository AccountRepository;
+    AccountRepository accountRepository;
 
-    @GetMapping("/Accounts")
+    @GetMapping("/accounts")
     public List<Account> getAllAccounts() {
-        return AccountRepository.findAll();
+        return accountRepository.findAll();
     }
 
-    @PostMapping("/Accounts")
-    public Account createAccount(@Valid @RequestBody Account Account) {
-        return AccountRepository.save(Account);
+    @PostMapping("/accounts")
+    public Account createAccount(@Valid @RequestBody Account account) {
+        return accountRepository.save(account);
     }
 
-    @GetMapping("/Accounts/{id}")
-    public Account getAccountById(@PathVariable(value = "id") Long AccountId) {
-        return AccountRepository.findById(AccountId)
-                .orElseThrow(() -> new ResourceNotFoundException("Account", "id", AccountId));
+    @GetMapping("/accounts/{id}")
+    public Account getAccountById(@PathVariable(value = "id") Long accountId) {
+        return accountRepository.findById(accountId)
+                .orElseThrow(() -> new ResourceNotFoundException("Account", "id", accountId));
     }
 
-    @PutMapping("/Accounts/{id}")
-    public Account updateAccount(@PathVariable(value = "id") Long AccountId,
-                                           @Valid @RequestBody Account AccountDetails) {
+    @PutMapping("/accounts/{id}")
+    public Account updateAccount(@PathVariable(value = "id") Long accountId,
+                                           @Valid @RequestBody Account accountDetails) {
 
-        Account Account = AccountRepository.findById(AccountId)
-                .orElseThrow(() -> new ResourceNotFoundException("Account", "id", AccountId));
+        Account account = accountRepository.findById(accountId)
+                .orElseThrow(() -> new ResourceNotFoundException("Account", "id", accountId));
 
-        Account.setTitle(AccountDetails.getTitle());
-        Account.setContent(AccountDetails.getContent());
+        account.setTitle(accountDetails.getTitle());
+        account.setContent(accountDetails.getContent());
 
-        Account updatedAccount = AccountRepository.save(Account);
+        Account updatedAccount = accountRepository.save(account);
         return updatedAccount;
     }
 
-    @DeleteMapping("/Accounts/{id}")
-    public ResponseEntity<?> deleteAccount(@PathVariable(value = "id") Long AccountId) {
-        Account Account = AccountRepository.findById(AccountId)
-                .orElseThrow(() -> new ResourceNotFoundException("Account", "id", AccountId));
+    @DeleteMapping("/accounts/{id}")
+    public ResponseEntity<?> deleteAccount(@PathVariable(value = "id") Long accountId) {
+        Account account = accountRepository.findById(accountId)
+                .orElseThrow(() -> new ResourceNotFoundException("Account", "id", accountId));
 
-        AccountRepository.delete(Account);
+        accountRepository.delete(account);
 
         return ResponseEntity.ok().build();
     }
