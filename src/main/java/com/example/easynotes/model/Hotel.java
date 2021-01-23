@@ -15,7 +15,12 @@ import com.example.easynotes.model.Account;
 import com.example.easynotes.model.HotelRoom;
 import com.example.easynotes.model.Reservation;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 @Table(name = "hotel")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
@@ -25,12 +30,14 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /*
     @ManyToOne
     @JoinColumn(name="id")
     private Account ownerAccount;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
     private List<HotelRoom> rooms;
+    */
 
     @NotBlank
     private String name;
@@ -51,12 +58,6 @@ public class Hotel {
     private int zip;
 
     private int zipPlus4;
-
-    @NotBlank
-    private int[] rooms;
-
-    @NotBlank
-    private int[] roomPrices;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)

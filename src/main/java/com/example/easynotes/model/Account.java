@@ -15,7 +15,12 @@ import com.example.easynotes.model.Hotel;
 import com.example.easynotes.model.HotelRoom;
 import com.example.easynotes.model.Reservation;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 @Table(name = "account")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
@@ -25,11 +30,13 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /*
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
     private List<Hotel> hotels;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
     private List<Reservation> reservations;
+    */
 
     @NotBlank
     private String email;
@@ -39,7 +46,7 @@ public class Account {
 
     @org.hibernate.annotations.Type(type="true_false")
     @NotNull
-    boolean isOwner;
+    boolean owner;
 
     @NotBlank
     private String firstName;
@@ -52,7 +59,6 @@ public class Account {
     @NotBlank
     private String address;
 
-    @NotBlank
     private String addressPart2;
 
     @NotBlank

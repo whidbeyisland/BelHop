@@ -43,8 +43,10 @@ public class HotelRoomController {
         HotelRoom hotelRoom = hotelRoomRepository.findById(hotelRoomId)
                 .orElseThrow(() -> new ResourceNotFoundException("HotelRoom", "id", hotelRoomId));
 
+        /*
         hotelRoom.setTitle(hotelRoomDetails.getTitle());
         hotelRoom.setContent(hotelRoomDetails.getContent());
+        */
 
         HotelRoom updatedHotelRoom = hotelRoomRepository.save(hotelRoom);
         return updatedHotelRoom;

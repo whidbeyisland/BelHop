@@ -43,8 +43,10 @@ public class HotelController {
         Hotel hotel = hotelRepository.findById(hotelId)
                 .orElseThrow(() -> new ResourceNotFoundException("Hotel", "id", hotelId));
 
+        /*
         hotel.setTitle(hotelDetails.getTitle());
         hotel.setContent(hotelDetails.getContent());
+        */
 
         Hotel updatedHotel = hotelRepository.save(hotel);
         return updatedHotel;

@@ -43,8 +43,22 @@ public class AccountController {
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(() -> new ResourceNotFoundException("Account", "id", accountId));
 
+        /*
         account.setTitle(accountDetails.getTitle());
         account.setContent(accountDetails.getContent());
+        */
+        account.setEmail(accountDetails.getEmail());
+        account.setPassword(accountDetails.getPassword());
+        account.setOwner(accountDetails.isOwner());
+        account.setFirstName(accountDetails.getFirstName());
+        account.setMiddleName(accountDetails.getMiddleName());
+        account.setLastName(accountDetails.getLastName());
+        account.setAddress(accountDetails.getAddress());
+        account.setAddressPart2(accountDetails.getAddressPart2());
+        account.setCity(accountDetails.getCity());
+        account.setState(accountDetails.getState());
+        account.setZip(accountDetails.getZip());
+        account.setZipPlus4(accountDetails.getZipPlus4());
 
         Account updatedAccount = accountRepository.save(account);
         return updatedAccount;

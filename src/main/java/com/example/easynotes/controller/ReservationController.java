@@ -43,8 +43,10 @@ public class ReservationController {
         Reservation reservation = reservationRepository.findById(reservationId)
                 .orElseThrow(() -> new ResourceNotFoundException("Reservation", "id", reservationId));
 
+        /*
         reservation.setTitle(reservationDetails.getTitle());
         reservation.setContent(reservationDetails.getContent());
+        */
 
         Reservation updatedReservation = reservationRepository.save(reservation);
         return updatedReservation;
