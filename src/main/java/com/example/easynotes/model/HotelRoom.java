@@ -29,14 +29,13 @@ public class HotelRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int hotelRoom_id;
-    //Long
 
     @ManyToOne
     @JoinColumn(name="hotel_id")
     private Hotel hotelLocatedIn;
 
     @OneToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="reservation_id")
     private Reservation reservationRoomIsUnder;
 
     @NotNull

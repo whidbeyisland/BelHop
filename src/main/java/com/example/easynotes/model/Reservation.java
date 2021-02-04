@@ -29,7 +29,6 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reservation_id;
-    //Long
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "reservationRoomIsUnder")
     private HotelRoom roomReserved;

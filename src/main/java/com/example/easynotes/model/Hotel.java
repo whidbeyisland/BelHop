@@ -44,7 +44,6 @@ public class Hotel {
     @NotBlank
     private String address;
 
-    @NotBlank
     private String addressPart2;
 
     @NotBlank
