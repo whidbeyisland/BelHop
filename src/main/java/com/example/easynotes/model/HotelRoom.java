@@ -21,24 +21,23 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "hotel")
+@Table(name = "hotelroom")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
         allowGetters = true)
 public class HotelRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int hotelRoom_id;
+    //Long
 
-    /*
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="hotel_id")
     private Hotel hotelLocatedIn;
 
     @OneToOne
     @JoinColumn(name="id")
     private Reservation reservationRoomIsUnder;
-    */
 
     @NotNull
     private int roomNumber;

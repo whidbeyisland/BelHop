@@ -47,6 +47,8 @@ public class AccountController {
         account.setTitle(accountDetails.getTitle());
         account.setContent(accountDetails.getContent());
         */
+
+        //doesn't set relationships to other objects yet!
         account.setEmail(accountDetails.getEmail());
         account.setPassword(accountDetails.getPassword());
         account.setOwner(accountDetails.isOwner());

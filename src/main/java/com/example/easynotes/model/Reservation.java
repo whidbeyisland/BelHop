@@ -28,18 +28,17 @@ import lombok.Setter;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int reservation_id;
+    //Long
 
-    /*
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "id")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "reservationRoomIsUnder")
     private HotelRoom roomReserved;
 
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="account_id")
     private Account personReserving;
-    */
 
-    @NotBlank
+    @NotNull
     private Date whenArriving;
 
     private int phoneNumber;

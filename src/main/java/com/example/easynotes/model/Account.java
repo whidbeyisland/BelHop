@@ -28,15 +28,14 @@ import lombok.Setter;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int account_id;
+    //Long
 
-    /*
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "ownerAccount")
     private List<Hotel> hotels;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "personReserving")
     private List<Reservation> reservations;
-    */
 
     @NotBlank
     private String email;

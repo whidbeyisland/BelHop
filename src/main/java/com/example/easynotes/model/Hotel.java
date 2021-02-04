@@ -28,16 +28,15 @@ import lombok.Setter;
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int hotel_id;
+    //Long
 
-    /*
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="account_id")
     private Account ownerAccount;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "hotelLocatedIn")
     private List<HotelRoom> rooms;
-    */
 
     @NotBlank
     private String name;

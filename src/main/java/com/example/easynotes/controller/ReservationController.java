@@ -47,6 +47,10 @@ public class ReservationController {
         reservation.setTitle(reservationDetails.getTitle());
         reservation.setContent(reservationDetails.getContent());
         */
+        //reservation.setRoomReserved(reservationDetails.getRoomReserved());
+        reservation.setPersonReserving(reservationDetails.getPersonReserving());
+        reservation.setWhenArriving(reservationDetails.getWhenArriving());
+        reservation.setPhoneNumber(reservationDetails.getPhoneNumber());
 
         Reservation updatedReservation = reservationRepository.save(reservation);
         return updatedReservation;
