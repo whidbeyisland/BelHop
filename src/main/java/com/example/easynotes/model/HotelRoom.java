@@ -18,6 +18,8 @@ import com.example.easynotes.model.Reservation;
 import lombok.Getter;
 import lombok.Setter;
 
+import com.fasterxml.jackson.annotation;
+
 @Entity
 @Getter
 @Setter
@@ -30,11 +32,14 @@ public class HotelRoom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int hotelRoom_id;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name="hotel_id")
     private Hotel hotelLocatedIn;
 
-    @OneToOne
+    //@OneToOne
+    @JsonManagedReference
+    @ManyToOne
     @JoinColumn(name="reservation_id")
     private Reservation reservationRoomIsUnder;
 

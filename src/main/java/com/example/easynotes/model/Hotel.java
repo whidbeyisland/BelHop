@@ -18,6 +18,8 @@ import com.example.easynotes.model.Reservation;
 import lombok.Getter;
 import lombok.Setter;
 
+import com.fasterxml.jackson.annotation;
+
 @Entity
 @Getter
 @Setter
@@ -31,10 +33,12 @@ public class Hotel {
     private int hotel_id;
     //Long
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name="account_id")
     private Account ownerAccount;
 
+    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "hotelLocatedIn")
     private List<HotelRoom> rooms;
 
