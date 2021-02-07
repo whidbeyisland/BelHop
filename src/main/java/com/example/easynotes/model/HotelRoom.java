@@ -1,6 +1,8 @@
 package com.example.easynotes.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -18,28 +20,31 @@ import com.example.easynotes.model.Reservation;
 import lombok.Getter;
 import lombok.Setter;
 
-import com.fasterxml.jackson.annotation;
-
 @Entity
 @Getter
 @Setter
 @Table(name = "hotelroom")
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
+@JsonIgnoreProperties(value = {"createdAt", "updatedAt"/*, "roomsInHotel", "roomReserved", "hotelLocatedIn", "reservationRoomIsUnder"*/},
         allowGetters = true)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "hotelRoom_id")
 public class HotelRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int hotelRoom_id;
 
+    /*
     @JsonManagedReference
+    */
     @ManyToOne
     @JoinColumn(name="hotel_id")
     private Hotel hotelLocatedIn;
 
-    //@OneToOne
+    //@ManyToOne
+    /*
     @JsonManagedReference
-    @ManyToOne
+    */
+    @OneToOne
     @JoinColumn(name="reservation_id")
     private Reservation reservationRoomIsUnder;
 

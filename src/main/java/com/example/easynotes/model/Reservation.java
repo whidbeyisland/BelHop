@@ -1,6 +1,8 @@
 package com.example.easynotes.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -18,26 +20,31 @@ import com.example.easynotes.model.HotelRoom;
 import lombok.Getter;
 import lombok.Setter;
 
-import com.fasterxml.jackson.annotation;
+import java.lang.annotation.Annotation;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "reservation")
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
+@JsonIgnoreProperties(value = {"createdAt", "updatedAt"/*, "reservationRoomIsUnder", "reservationsHeld", "roomReserved", "personReserving"*/},
         allowGetters = true)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "reservation_id")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reservation_id;
 
-    //@OneToOne(fetch = FetchType.LAZY, mappedBy = "reservationRoomIsUnder")
+    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "reservationRoomIsUnder")
+    /*
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "reservationRoomIsUnder")
+    */
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "reservationRoomIsUnder")
     private HotelRoom roomReserved;
 
+    /*
     @JsonManagedReference
+    */
     @ManyToOne
     @JoinColumn(name="account_id")
     private Account personReserving;
