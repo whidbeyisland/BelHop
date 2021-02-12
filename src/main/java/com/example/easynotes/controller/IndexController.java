@@ -27,4 +27,10 @@ public class IndexController {
 		model.addAttribute("name", name);
 		return "greeting";
 	}
+
+    @GetMapping("/login")
+	public String login() {
+        //return "Hello and Welcome to the EasyNotes application. You can create a new Note by making a POST request to /api/notes endpoint.";
+        return "login";
+    }
 }

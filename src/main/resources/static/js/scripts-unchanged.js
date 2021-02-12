@@ -64,20 +64,6 @@
         $(this).removeClass("floating-label-form-group-with-focus");
       });
     });
-
-
-
-
-
-
-
-
-    $('.login-button').click(function() {
-      alert('Logged in!');
-    });
-    $('.login-button2').click(function() {
-      alert('Logged in!');
-    });
   
   })(jQuery); // End of use strict
   
