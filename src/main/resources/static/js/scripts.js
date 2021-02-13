@@ -5,6 +5,41 @@
     */
     (function($) {
     "use strict"; // Start of use strict
+
+
+
+    /*
+    $(document).ready(function() {
+      $('#login-button2').click(function(){
+        alert('Does this work?');
+      });
+    });
+    */
+    
+    $('#login-button2').click(function(){
+      $.ajax({
+        type: "POST",
+        url: "/api/notes",
+        data: JSON.stringify({
+          title: 'My Note',
+          content: 'My Text'
+        }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(response) {
+          alert(JSON.stringify(response));
+        },
+        error: function(xhr, status, error) {
+          alert(xhr.responseText);
+        }
+      });
+
+      //alert('Does this work?');
+    });
+
+
+
+
   
     // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
@@ -71,13 +106,6 @@
 
 
 
-
-    $('.login-button').click(function() {
-      alert('Logged in!');
-    });
-    $('.login-button2').click(function() {
-      alert('Logged in!');
-    });
   
   })(jQuery); // End of use strict
   
