@@ -2099,8 +2099,9 @@ textarea.form-control {
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 0px;
 }
+/*margin-bottom: 1rem;*/
 
 .form-text {
   display: block;
@@ -10188,7 +10189,7 @@ h3 {
 }
 .floating-label-form-group input,
 .floating-label-form-group textarea {
-  font-size: 1.5em;
+  font-size: 1.3em;
   position: relative;
   z-index: 1;
   padding-right: 0;
@@ -10199,6 +10200,7 @@ h3 {
   background: none;
   box-shadow: none !important;
 }
+/*font-size: 1.5em;*/
 .floating-label-form-group label {
   font-size: 0.85em;
   line-height: 1.764705882em;

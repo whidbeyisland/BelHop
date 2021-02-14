@@ -17,6 +17,7 @@
     */
     
     $('#login-button2').click(function(){
+      /*
       $.ajax({
         type: "POST",
         url: "/api/notes",
@@ -33,8 +34,9 @@
           alert(xhr.responseText);
         }
       });
+      */
 
-      //alert('Does this work?');
+      alert(document.getElementById('create-account-first-name').value);
     });
 
 

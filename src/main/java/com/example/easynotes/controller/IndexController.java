@@ -33,4 +33,10 @@ public class IndexController {
         //return "Hello and Welcome to the EasyNotes application. You can create a new Note by making a POST request to /api/notes endpoint.";
         return "login";
     }
+
+    @GetMapping("/create-account")
+	public String createAccount() {
+        //return "Hello and Welcome to the EasyNotes application. You can create a new Note by making a POST request to /api/notes endpoint.";
+        return "create-account";
+    }
 }
