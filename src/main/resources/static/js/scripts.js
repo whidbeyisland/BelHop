@@ -16,14 +16,23 @@
     });
     */
     
-    $('#login-button2').click(function(){
-      /*
+    $('#create-account-button').click(function(){
       $.ajax({
         type: "POST",
-        url: "/api/notes",
+        url: "/api/accounts",
         data: JSON.stringify({
-          title: 'My Note',
-          content: 'My Text'
+          email: document.getElementById('create-account-email').value,
+          password: document.getElementById('create-account-password').value,
+          owner: document.getElementById('create-account-owner').checked,
+          firstName: document.getElementById('create-account-first-name').value,
+          middleName: document.getElementById('create-account-middle-name').value,
+          lastName: document.getElementById('create-account-last-name').value,
+          address: document.getElementById('create-account-address').value,
+          addressPart2: document.getElementById('create-account-address-part-2').value,
+          city: document.getElementById('create-account-city').value,
+          state: document.getElementById('create-account-state').value,
+          zip: document.getElementById('create-account-zip').value,
+          zipPlus4: document.getElementById('create-account-zip-plus-4').value
         }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -34,9 +43,7 @@
           alert(xhr.responseText);
         }
       });
-      */
-
-      alert(document.getElementById('create-account-first-name').value);
+      alert('Account created!');
     });
 
 
