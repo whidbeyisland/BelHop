@@ -46,19 +46,24 @@
       });
     });
 
-    //email: document.getElementById('login-email').value
     $('#login-button').click(function(){
+      var correctPass = '';
       event.preventDefault();
       alert('hello world!');
+      //TODO: change this to a GET request *for the specific account entered in the email field*, not for all accounts
+      //email: document.getElementById('login-email').value
       $.ajax({
         type: "GET",
         url: "/api/accounts",
         success: function(response) {
+          //TODO: change this to access the "password" property of the response
           alert(response[0].email);
         },
         error: function(xhr, status, error) {
           alert(xhr.responseText);
         }
+
+        //TODO: implement session handling of account if the user successfully logs in
       });
     });
 
