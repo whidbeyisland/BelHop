@@ -44,24 +44,22 @@
           alert(xhr.responseText);
         }
       });
-      //alert('Account created!');
     });
 
+    //email: document.getElementById('login-email').value
     $('#login-button').click(function(){
-      //implement logic here
+      event.preventDefault();
+      alert('hello world!');
       $.ajax({
         type: "GET",
         url: "/api/accounts",
-        data: {
-          "id": document.getElementById('create-account-email').value
-        },
-        success: function(data){
-          //response from controller
-          alert(JSON.stringify(response));
+        success: function(response) {
+          alert(response[0].email);
         },
         error: function(xhr, status, error) {
           alert(xhr.responseText);
         }
+      });
     });
 
 
@@ -101,6 +99,7 @@
       offset: 80
     });
   
+    /*
     // Collapse Navbar
     var navbarCollapse = function() {
       if ($("#mainNav").offset().top > 100) {
@@ -113,6 +112,7 @@
     navbarCollapse();
     // Collapse the navbar when page is scrolled
     $(window).scroll(navbarCollapse);
+    */
   
     // Floating label headings for the contact form
     $(function() {
@@ -125,12 +125,4 @@
       });
     });
 
-
-
-
-
-
-
-  
   })(jQuery); // End of use strict
-  
