@@ -38,15 +38,19 @@
         dataType: "json",
         success: function(response) {
           alert(JSON.stringify(response));
+          window.location.replace('./login');
         },
         error: function(xhr, status, error) {
           alert(xhr.responseText);
         }
       });
-      alert('Account created!');
+      //alert('Account created!');
     });
 
-
+    $('#login-button').click(function(){
+      //implement logic here
+      
+    });
 
 
   
