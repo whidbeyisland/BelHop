@@ -49,7 +49,19 @@
 
     $('#login-button').click(function(){
       //implement logic here
-      
+      $.ajax({
+        type: "GET",
+        url: "/api/accounts",
+        data: {
+          "id": document.getElementById('create-account-email').value
+        },
+        success: function(data){
+          //response from controller
+          alert(JSON.stringify(response));
+        },
+        error: function(xhr, status, error) {
+          alert(xhr.responseText);
+        }
     });
 
 
