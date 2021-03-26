@@ -50,20 +50,26 @@
       var correctPass = '';
       event.preventDefault();
       alert('hello world!');
-      //TODO: change this to a GET request *for the specific account entered in the email field*, not for all accounts
-      //email: document.getElementById('login-email').value
+      //TODO: try converting all the "id" ints in the model classes to Longs, make sure it doesn't break anything
+
       $.ajax({
         type: "GET",
         url: "/api/accounts",
         success: function(response) {
-          //TODO: change this to access the "password" property of the response
-          alert(response[0].email);
+          var corrPwd = "";
+          for (var i = 0; i < response.length; i++) {
+            if (response[i].email = document.getElementById('login-email').value)
+            corrPwd = response[i].password;
+          }
+          alert(corrPwd);
+
+          if (document.getElementById('login-password').value == corrPwd && corrPwd != null) {
+            //TODO: implement session handling of account since user has successfully logged in
+          }
         },
         error: function(xhr, status, error) {
           alert(xhr.responseText);
         }
-
-        //TODO: implement session handling of account if the user successfully logs in
       });
     });
 

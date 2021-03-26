@@ -34,7 +34,6 @@ public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int hotel_id;
-    //Long
 
     /*
     @JsonManagedReference

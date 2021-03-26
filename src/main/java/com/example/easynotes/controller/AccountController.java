@@ -36,6 +36,15 @@ public class AccountController {
                 .orElseThrow(() -> new ResourceNotFoundException("Account", "id", accountId));
     }
 
+    //EXPERIMENTAL
+    /*
+    @GetMapping("/accounts/email")
+    public @ResponseBody GridModel getAccountByEmail(
+    @RequestParam String email) {
+        return accountRepository.findAll().
+    }
+    */
+
     @PutMapping("/accounts/{id}")
     public Account updateAccount(@PathVariable(value = "id") Long accountId,
                                            @Valid @RequestBody Account accountDetails) {
